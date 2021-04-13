@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Contact extends DZ_3{
+public class Contact extends DZ_3 {
 
     public static void addPersona(WebDriver driver, String personaName, String personaFirstName, String companyName) {
         driver.findElement(By.xpath(

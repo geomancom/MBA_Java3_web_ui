@@ -27,27 +27,38 @@ public class DZ_3_2 {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
         //создаем
+        createNota();
+        //проверяем
+        checkNota();
+        Thread.sleep(2000);
+        //удаляем
+        deleteNota();
+
+        Thread.sleep(2000);
+        driver.quit();
+    }
+
+    public static void createNota(){
         driver.get(LOGIN_PAGE_URL);
         driver.findElement(By.xpath(".//button[@id='new_btn']")).click();
         driver.findElement(By.xpath(".//input[@id='n_title']")).sendKeys(NOTA_TITLE);
         driver.findElement(By.xpath(".//textarea[@id='n_text']")).sendKeys(NOTA_TEXT);
         driver.findElement(By.xpath(".//ul[@class='menu']/li[1]/a")).click();
         driver.findElement(By.xpath(".//a[@id='file_save']")).click();
-        //проверяем
-        String getNotaTitle = driver.findElement(By.xpath(".//ul[@class='notes']/li/b")).getText();
-        String getNotaText = driver.findElement(By.xpath(".//ul[@class='notes']/li/p")).getText();
-        System.out.println(getNotaTitle);
-        System.out.println(getNotaText);
-
-        //удаляем
-        Thread.sleep(2000);
-        driver.findElement(By.xpath(".//a[@id='del_btn']")).click();
-        driver.findElement(By.xpath(".//button[@id='del_yes']")).click();
-
-
-
-        Thread.sleep(2000);
-        driver.quit();
     }
 
+    public static void checkNota(){
+        String getNotaTitle = driver.findElement(By.xpath(".//ul[@class='notes']/li/b")).getText();
+        String getNotaText = driver.findElement(By.xpath(".//ul[@class='notes']/li/p")).getText();
+        if (getNotaTitle.equals(NOTA_TITLE) & getNotaText.equals(NOTA_TEXT)){
+            System.out.println("completed");
+        }else{
+            System.out.println("not created");
+        }
+    }
+
+    public static void deleteNota(){
+        driver.findElement(By.xpath(".//a[@id='del_btn']")).click();
+        driver.findElement(By.xpath(".//button[@id='del_yes']")).click();
+    }
 }

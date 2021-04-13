@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class Project extends DZ_3{
+public class Project extends DZ_3 {
     public static void login(WebDriver driver, String loginPageUrl, String studentLogin, String studentPassword) {
         driver.get(loginPageUrl);
         WebElement loginTextInput = driver.findElement(By.id("prependedInput"));

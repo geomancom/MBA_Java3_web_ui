@@ -7,8 +7,7 @@ public class ExpenseSubMenu extends SubMenu{
         super(driver);
     }
 
-    @Override
-    public BaseView clickSubMenuButton(SubMenuButtons buttons) {
+    public AllExpensesPage clickSubMenuButton(SubMenuButtons buttons) {
         if (buttons instanceof ExpenseSubMenuButtons) {
             switch ((ExpenseSubMenuButtons) buttons) {
                 case EXPENSE_REQUEST:

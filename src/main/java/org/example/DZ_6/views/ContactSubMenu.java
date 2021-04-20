@@ -7,8 +7,7 @@ public class ContactSubMenu extends SubMenu{
         super(driver);
     }
 
-    @Override
-    public BaseView clickSubMenuButton(SubMenuButtons buttons) {
+    public AllContactPage clickSubMenuButton(SubMenuButtons buttons) {
         if (buttons instanceof ContactSubMenuButtons) {
             switch ((ContactSubMenuButtons) buttons) {
                 case CONTACT_PERSONS:

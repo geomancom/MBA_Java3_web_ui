@@ -20,6 +20,8 @@ public class NavigationBar extends BaseView {
                 return new ExpenseSubMenu(driver);
             case COUNTER_PARTIES:
                 return new ContactSubMenu(driver);
+            case PROJECTS:
+                return new ProjectSubMenu(driver);
             default:
                 throw new IllegalArgumentException("Another tabs currently not implemented");
         }

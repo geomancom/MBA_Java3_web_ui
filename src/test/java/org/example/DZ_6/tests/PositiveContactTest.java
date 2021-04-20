@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.example.DZ_6.Configuration.*;
 import static org.example.DZ_6.views.ContactSubMenuButtons.CONTACT_PERSONS;
-import static org.example.DZ_6.views.ExpenseSubMenuButtons.EXPENSE_REQUEST;
 import static org.example.DZ_6.views.NavigationBarTabs.COUNTER_PARTIES;
-import static org.example.DZ_6.views.NavigationBarTabs.EXPENSES;
 
 public class PositiveContactTest extends BaseUITest {
     @Test
@@ -30,11 +28,45 @@ public class PositiveContactTest extends BaseUITest {
                 .enterPassword(STUDENT_PASSWORD)
                 .clickLoginButton()
                 .getPageNavigation()
-                //.moveCursorToNavigationTab(EXPENSES)
-                //.clickSubMenuButton(EXPENSE_REQUEST)
                 .moveCursorToNavigationTab(COUNTER_PARTIES)
-                .clickSubMenuButton(CONTACT_PERSONS)
+                .clickSubMenuButtonGoAllContactPage(CONTACT_PERSONS)
+                .checkUrl(CONTACT_URL)
+        ;
+    }
 
+    @Test
+    public void checkUrlCreateAllContactTest() {
+        new LoginPage(driver)
+                .enterLogin(STUDENT_LOGIN)
+                .enterPassword(STUDENT_PASSWORD)
+                .clickLoginButton()
+                .getPageNavigation()
+                .moveCursorToNavigationTab(COUNTER_PARTIES)
+                .clickSubMenuButtonGoAllContactPage(CONTACT_PERSONS)
+                .clickOnCreateNewContactButton()
+                .checkUrl(CONTACT_CREATE_URL)
                 ;
     }
+
+    @Test
+    public void checkCreateAllContactTest() {
+        new LoginPage(driver)
+                .enterLogin(STUDENT_LOGIN)
+                .enterPassword(STUDENT_PASSWORD)
+                .clickLoginButton()
+                .getPageNavigation()
+                .moveCursorToNavigationTab(COUNTER_PARTIES)
+                .clickSubMenuButtonGoAllContactPage(CONTACT_PERSONS)
+                .clickOnCreateNewContactButton()
+                .insertLastName(PERSONA_NAME)
+                .insertFirstName(PERSONA_FIRST_NAME)
+                .insertJobTitle(JOB_TITLE)
+                .selectCompany(COMPANY_NAME)
+                .goSaveButtons()
+                .checkNewContactPopUp()
+        ;
+
+
+    }
 }
+

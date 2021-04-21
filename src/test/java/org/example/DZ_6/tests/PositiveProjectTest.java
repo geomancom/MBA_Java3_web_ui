@@ -5,6 +5,8 @@ import org.example.DZ_6.LoginPage;
 import org.junit.jupiter.api.Test;
 
 import static org.example.DZ_6.Configuration.*;
+import static org.example.DZ_6.views.ContactSubMenuButtons.CONTACT_PERSONS;
+import static org.example.DZ_6.views.NavigationBarTabs.COUNTER_PARTIES;
 import static org.example.DZ_6.views.NavigationBarTabs.PROJECTS;
 import static org.example.DZ_6.views.ProjectSubMenuButtons.ALL_PROJECT;
 
@@ -44,6 +46,32 @@ public class PositiveProjectTest extends BaseUITest {
                 .clickOnCreateNewProjectButton()
                 .checkUrl(PROJECT_CREATE_URL)
         ;
+    }
+
+    @Test
+    public void checkCreateAllProjectTest() {
+        new LoginPage(driver)
+                .enterLogin(STUDENT_LOGIN)
+                .enterPassword(STUDENT_PASSWORD)
+                .clickLoginButton()
+                .getPageNavigation()
+                .moveCursorToNavigationTab(PROJECTS)
+                .clickSubMenuButtonGoAllProjectPage(ALL_PROJECT)
+                .clickOnCreateNewProjectButton()
+                .insertProjectName(PROJECT_NAME)
+                .insertCompanyName(COMPANY_NAME)
+                .selectSkipSpeedChecks()
+                .selectBusinessUnit(BUV)
+                .selectСurator(AAAV)
+                .selectRp(AAAV)
+                .selectManager(AAAV)
+                .insertPersonaName(PERSONA_NAME)
+                .insertConfigManagement(PERSONA_NAME)
+                .goSaveButtons()
+                .checkUrl(PROJECT_URL);
+        ;
+
+
     }
 
 }

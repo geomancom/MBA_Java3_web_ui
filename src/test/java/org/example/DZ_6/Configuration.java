@@ -14,5 +14,7 @@ public class Configuration {
     public static final String PERSONA_NAME = "Man";
     public static final String PERSONA_FIRST_NAME = "Boris";
     public static final String JOB_TITLE = "пони";
+    public static final String BUV = "1"; //BusinessUnitValue
+    public static final String AAAV = "Applanatest Applanatest Applanatest";// ApplanatestApplanatestApplanatestValue
 
 }

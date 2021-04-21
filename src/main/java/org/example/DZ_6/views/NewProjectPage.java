@@ -32,13 +32,13 @@ public class NewProjectPage extends BaseView{
     private Select businessUnit;
 
     @FindBy(name = "crm_project[curator]")
-    private WebElement curator;
+    private Select curator;
 
     @FindBy(name = "crm_project[rp]")
-    private WebElement rp;
+    private Select rp;
 
     @FindBy(name = "crm_project[manager]")
-    private WebElement manager;
+    private Select manager;
 
     @FindBy(name = "crm_project[configManagement]")
     private WebElement configManagement;
@@ -78,10 +78,37 @@ public class NewProjectPage extends BaseView{
         personaNameResult.click();
         return this;
     }
-    public NewProjectPage selectBusinessUnit(String businessUnit){
-        businessUnit.selectByValue("1");
-
+    public NewProjectPage selectBusinessUnit(String BusinessUnitValue){
+        businessUnit.selectByValue(BusinessUnitValue);
         return this;
     }
 
+    public NewProjectPage selectСurator(String ApplanatestApplanatestApplanatestValue){
+        curator.selectByVisibleText(ApplanatestApplanatestApplanatestValue);
+        return this;
+    }
+
+    public NewProjectPage selectRp(String ApplanatestApplanatestApplanatestValue){
+        rp.selectByVisibleText(ApplanatestApplanatestApplanatestValue);
+        return this;
+    }
+    public NewProjectPage selectManager(String ApplanatestApplanatestApplanatestValue){
+        manager.selectByVisibleText(ApplanatestApplanatestApplanatestValue);
+        return this;
+    }
+
+    public NewProjectPage insertConfigManagement(String personaName){
+        configManagement.sendKeys(personaName);
+        return this;
+    }
+
+    public NewProjectPage selectSkipSpeedChecks(){
+        skipSpeedChecks.click();
+        return this;
+    }
+
+    public AllProjectPage goSaveButtons(){
+        saveButtons.click();
+        return new AllProjectPage(driver);
+    }
 }

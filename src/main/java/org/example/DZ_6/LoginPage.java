@@ -1,5 +1,6 @@
 package org.example.DZ_6;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,21 +21,25 @@ public class LoginPage extends BaseView{
         super(driver);
     }
 
+    @Step(value = "Enter Login {login}")
     public LoginPage enterLogin(String login) {
         inputLogin.sendKeys(login);
         return this;
     }
 
+    @Step(value = "Enter Password {password}")
     public LoginPage enterPassword(String password) {
         inputPassword.sendKeys(password);
         return this;
     }
 
+    @Step(value = "Click Login Button")
     public HomePage clickLoginButton() {
         buttonSignIn.click();
         return new HomePage(driver);
     }
 
+    @Step(value = "Authorise Scenario")
     public HomePage authoriseScenario(String login, String password) {
         inputLogin.sendKeys(login);
         inputPassword.sendKeys(password);

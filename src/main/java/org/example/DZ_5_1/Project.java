@@ -15,7 +15,7 @@ public class Project extends DZ_5 {
         WebElement passwordTextInput = driver.findElement(By.name("_password"));
         passwordTextInput.sendKeys(studentPassword);
         driver.findElement(By.xpath(".//button[@name='_submit']")).click();
-        System.out.println("tut2");
+
 
 
     }

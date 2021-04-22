@@ -8,6 +8,7 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.logging.LogType;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +38,7 @@ public class BaseUITest {
 
     @AfterEach
     public void tearDown() {
+        driver.manage().logs().get(LogType.BROWSER).getAll().forEach(System.out::println);
         driver.quit();
     }
 }

@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class DZ_5 {
     private static WebDriver driver;
     private static final String LOGIN_PAGE_URL = "https://crm.geekbrains.space/user/login";
-    private static final String STUDENT_LOGIN = "Applanatest";
+    private static final String STUDENT_LOGIN = "Applanatest1";
     private static final String STUDENT_PASSWORD = "Student2020!";
     private static final String PROJECT_NAME = "manbob";
     private static final String COMPANY_NAME = "1234";
@@ -35,8 +35,8 @@ public class DZ_5 {
 
 
         Project.login(driver, LOGIN_PAGE_URL, STUDENT_LOGIN, STUDENT_PASSWORD);
-        //Project.addProject(driver, PROJECT_NAME, COMPANY_NAME, PERSONA_NAME, WebDriverWait5sec);
-        //Project.deleteProject(driver, WebDriverWait5sec);
+        Project.addProject(driver, PROJECT_NAME, COMPANY_NAME, PERSONA_NAME, WebDriverWait5sec);
+        Project.deleteProject(driver, WebDriverWait5sec);
 
         Thread.sleep(2000);
 

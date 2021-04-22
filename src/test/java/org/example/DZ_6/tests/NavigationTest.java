@@ -7,6 +7,7 @@ import org.example.DZ_6.views.NavigationBarTabs;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+
 public class NavigationTest extends BaseUITest {
     @ParameterizedTest
     @MethodSource("navigationTabProvider")

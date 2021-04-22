@@ -1,5 +1,6 @@
 package org.example.DZ_6.views;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,7 +20,7 @@ public class NewProjectPage extends BaseView{
     @FindBy(xpath = ".//div[@id='select2-drop']/div/input")
     private WebElement companyNameTextInput;
 
-    @FindBy(xpath = ".//div[@class='select2-container select2']']/input")
+    @FindBy(xpath = ".//div[@class='controls']/div[@class='select2-container select2']/a")
     private WebElement persona;
 
     @FindBy(xpath = ".//div[@id='select2-drop']/div/input")
@@ -29,16 +30,16 @@ public class NewProjectPage extends BaseView{
     private WebElement personaNameResult;
 
     @FindBy(name = "crm_project[businessUnit]")
-    private Select businessUnit;
+    private WebElement businessUnit;
 
     @FindBy(name = "crm_project[curator]")
-    private Select curator;
+    private WebElement curator;
 
     @FindBy(name = "crm_project[rp]")
-    private Select rp;
+    private WebElement rp;
 
     @FindBy(name = "crm_project[manager]")
-    private Select manager;
+    private WebElement manager;
 
     @FindBy(name = "crm_project[configManagement]")
     private WebElement configManagement;
@@ -54,16 +55,20 @@ public class NewProjectPage extends BaseView{
         super(driver);
     }
 
+    @Step(value = "Check Url {url}")
     public void checkUrl(String url) {
         wait15second.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//input[@data-name='field__name']")));
         assertEquals(driver.getCurrentUrl(), url);
         System.out.println(driver.getCurrentUrl());
     }
 
+    @Step(value = "Insert Project Name {projectName}")
     public NewProjectPage insertProjectName(String projectName){
         projectNameTextInput.sendKeys(projectName);
         return this;
     }
+
+    @Step(value = "Insert Company Name {companyName}")
     public NewProjectPage insertCompanyName(String companyName){
         company.click();
         companyNameTextInput.click();
@@ -71,6 +76,8 @@ public class NewProjectPage extends BaseView{
         driver.findElement(By.xpath(".//div[@class='select2-result-label']/span[text()='"+companyName+"']")).click();
         return this;
     }
+
+    @Step(value = "Insert Persona Name {personaName}")
     public NewProjectPage insertPersonaName(String personaName){
         persona.click();
         personaNameTextInput.click();
@@ -78,35 +85,48 @@ public class NewProjectPage extends BaseView{
         personaNameResult.click();
         return this;
     }
+
+    @Step(value = "Select Business Unit {BusinessUnitValue}")
     public NewProjectPage selectBusinessUnit(String BusinessUnitValue){
-        businessUnit.selectByValue(BusinessUnitValue);
+        Select sUnit = new Select(businessUnit);
+        sUnit.selectByValue(BusinessUnitValue);
         return this;
     }
 
+    @Step(value = "Select Сurator {ApplanatestApplanatestApplanatestValue}")
     public NewProjectPage selectСurator(String ApplanatestApplanatestApplanatestValue){
-        curator.selectByVisibleText(ApplanatestApplanatestApplanatestValue);
+        Select sСurator = new Select(curator);
+        sСurator.selectByVisibleText(ApplanatestApplanatestApplanatestValue);
         return this;
     }
 
+    @Step(value = "Select RP {ApplanatestApplanatestApplanatestValue}")
     public NewProjectPage selectRp(String ApplanatestApplanatestApplanatestValue){
-        rp.selectByVisibleText(ApplanatestApplanatestApplanatestValue);
-        return this;
-    }
-    public NewProjectPage selectManager(String ApplanatestApplanatestApplanatestValue){
-        manager.selectByVisibleText(ApplanatestApplanatestApplanatestValue);
+        Select sRp = new Select(rp);
+        sRp.selectByVisibleText(ApplanatestApplanatestApplanatestValue);
         return this;
     }
 
+    @Step(value = "Select Manager {ApplanatestApplanatestApplanatestValue}")
+    public NewProjectPage selectManager(String ApplanatestApplanatestApplanatestValue){
+        Select sManager = new Select(manager);
+        sManager.selectByVisibleText(ApplanatestApplanatestApplanatestValue);
+        return this;
+    }
+
+    @Step(value = "Insert Config Management {personaName}")
     public NewProjectPage insertConfigManagement(String personaName){
         configManagement.sendKeys(personaName);
         return this;
     }
 
+    @Step(value = "Select Skip Speed Checks")
     public NewProjectPage selectSkipSpeedChecks(){
         skipSpeedChecks.click();
         return this;
     }
 
+    @Step(value = "Go Save Buttons")
     public AllProjectPage goSaveButtons(){
         saveButtons.click();
         return new AllProjectPage(driver);

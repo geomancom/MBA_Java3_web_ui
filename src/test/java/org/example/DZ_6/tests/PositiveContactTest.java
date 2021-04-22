@@ -1,5 +1,8 @@
 package org.example.DZ_6.tests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.example.DZ_6.BaseUITest;
 import org.example.DZ_6.LoginPage;
 import org.junit.jupiter.api.Test;
@@ -8,6 +11,8 @@ import static org.example.DZ_6.Configuration.*;
 import static org.example.DZ_6.views.ContactSubMenuButtons.CONTACT_PERSONS;
 import static org.example.DZ_6.views.NavigationBarTabs.COUNTER_PARTIES;
 
+@Feature("Create New Contact")
+@Severity(SeverityLevel.CRITICAL)
 public class PositiveContactTest extends BaseUITest {
     @Test
     public void checkContactTabVisibilityTest() {
@@ -49,7 +54,7 @@ public class PositiveContactTest extends BaseUITest {
     }
 
     @Test
-    public void checkCreateAllContactTest() {
+    public void checkCreateNewContactTest() {
         new LoginPage(driver)
                 .enterLogin(STUDENT_LOGIN)
                 .enterPassword(STUDENT_PASSWORD)

@@ -1,5 +1,6 @@
 package org.example.DZ_6.views;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,20 +36,26 @@ public class NewContactPage extends BaseView{
         super(driver);
     }
 
+    @Step(value = "Check Url {url}")
     public void checkUrl(String url) {
         wait15second.until(ExpectedConditions.presenceOfElementLocated(By.name("crm_contact[lastName]")));
         assertEquals(driver.getCurrentUrl(), url);
         System.out.println(driver.getCurrentUrl());
     }
 
+    @Step(value = "Insert Last Name {lastName}")
     public NewContactPage insertLastName(String lastName){
         lastNameTextInput.sendKeys(lastName);
         return this;
     }
+
+    @Step(value = "Insert First Name {firstName}")
     public NewContactPage insertFirstName(String firstName){
         firstNameTextInput.sendKeys(firstName);
         return this;
     }
+
+    @Step(value = "Select Company {companyName}")
     public NewContactPage selectCompany(String companyName){
         company.click();
         companyInput.click();
@@ -56,11 +63,14 @@ public class NewContactPage extends BaseView{
         driver.findElement(By.xpath(".//div[@class='select2-result-label']/span[text()='"+companyName+"']")).click();
         return this;
     }
+
+    @Step(value = "Insert Job Title {jobTitle}")
     public NewContactPage insertJobTitle(String jobTitle){
         jobTitleTextInput.sendKeys(jobTitle);
         return this;
     }
 
+    @Step(value = "Go Save Buttons")
     public AllContactPage goSaveButtons(){
         saveButtons.click();
         return new AllContactPage(driver);
